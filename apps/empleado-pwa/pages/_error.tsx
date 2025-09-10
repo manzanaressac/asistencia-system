@@ -1,4 +1,3 @@
-// apps/empleado-pwa/pages/_error.tsx
 'use client';
 
 import { NextPage } from 'next';
@@ -9,17 +8,38 @@ interface ErrorProps {
   statusCode?: number;
 }
 
-const CustomError: NextPage<ErrorProps> = ({ statusCode }) => {
+const CustomError: NextPage<ErrorProps> = ({ statusCode = 404 }) => {
   return (
-    <div style={{ textAlign: 'center', marginTop: '5rem' }}>
-      <h1 style={{ fontSize: '4rem' }}>{statusCode || 'Error'}</h1>
-      <h2>Ocurrió un error en la aplicación</h2>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '80vh',
+        textAlign: 'center',
+        fontFamily: 'Arial, sans-serif',
+        padding: '2rem',
+      }}
+    >
+      <h1 style={{ fontSize: '6rem', margin: 0 }}>{statusCode}</h1>
+      <h2 style={{ fontSize: '2rem', margin: '1rem 0' }}>
+        Ocurrió un error en la aplicación
+      </h2>
+      <p style={{ fontSize: '1rem', color: '#666' }}>
+        La página que buscas no se pudo cargar o no existe.
+      </p>
       <Link href="/">
         <button
           style={{
-            padding: '0.5rem 1rem',
-            marginTop: '1rem',
+            marginTop: '2rem',
+            padding: '0.75rem 1.5rem',
+            fontSize: '1rem',
             cursor: 'pointer',
+            borderRadius: '0.5rem',
+            border: 'none',
+            backgroundColor: '#0070f3',
+            color: '#fff',
           }}
         >
           Volver al inicio
@@ -27,11 +47,6 @@ const CustomError: NextPage<ErrorProps> = ({ statusCode }) => {
       </Link>
     </div>
   );
-};
-
-CustomError.getInitialProps = ({ res, err }: any) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-  return { statusCode };
 };
 
 export default CustomError;
