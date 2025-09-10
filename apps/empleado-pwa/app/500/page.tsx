@@ -1,11 +1,11 @@
 'use client';
 import Link from 'next/link';
 
-export default function Custom404() {
+export default function Custom500() {
   return (
     <div style={{ textAlign: 'center', marginTop: '5rem' }}>
-      <h1 style={{ fontSize: '6rem', margin: 0 }}>404</h1>
-      <h2>Página no encontrada</h2>
+      <h1 style={{ fontSize: '6rem', margin: 0 }}>500</h1>
+      <h2>Error en el servidor</h2>
       <Link href="/">
         <button style={{
           marginTop: '2rem',
